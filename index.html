@@ -3,237 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Hunter Size Table</title>
+    <title>Monster Hunter Size Cards</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffcb69;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .monster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .monster-card {
+            background: linear-gradient(145deg, #2a2a4a, #1f1f3a);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .monster-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .monster-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 203, 105, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .monster-card:hover::before {
+            opacity: 1;
+        }
+
+        .monster-image {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .monster-info {
+            padding: 20px;
             text-align: center;
         }
-        th {
-            background-color: #f2c94c;
-            color: #333;
+
+        .monster-name {
+            font-size: 1.5rem;
+            color: #ffcb69;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        td img {
-            width: 50px;
-            height: 50px;
-            vertical-align: middle;
+
+        .monster-sizes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+
+        .size-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            transition: background 0.3s ease;
         }
-        /* モンスター名とサイズが折り返さないようにする */
-        td:nth-child(2), td:nth-child(3), td:nth-child(4) {
-            white-space: nowrap;
+
+        .size-box:hover {
+            background: rgba(255, 203, 105, 0.3);
         }
-        /* スマホ対応: 横スクロール可能にする */
+
+        .size-box span {
+            font-weight: bold;
+            color: #ffcb69;
+        }
+
+        /* レスポンシブ対応 */
         @media (max-width: 768px) {
-            table {
-                width: auto;
-                display: block;
-                overflow-x: auto;
+            .monster-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .monster-card {
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>名前</th>
-                <th>最小値</th>
-                <th>最大値</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rathian_Icon.webp.png" alt="リオレイア"></td>
-                <td>リオレイア</td>
-                <td>1543.84</td>
-                <td>2192.96</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rathalos_Icon.webp.png" alt="リオレウス"></td>
-                <td>リオレウス</td>
-                <td>1499.71</td>
-                <td>2130.27</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Rathalos_Icon.webp.png" alt="護竜リオレウス"></td>
-                <td>護竜リオレウス</td>
-                <td>1499.71</td>
-                <td>2130.27</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gravios_Icon.webp.png" alt="グラビモス"></td>
-                <td>グラビモス</td>
-                <td>1848.51</td>
-                <td>2625.72</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Yian_Kut-Ku_Icon.webp.png" alt="イャンクック"></td>
-                <td>イャンクック</td>
-                <td>885.14</td>
-                <td>1243.18</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gypceros_Icon.webp.png" alt="ゲリョス"></td>
-                <td>ゲリョス</td>
-                <td>848.44</td>
-                <td>1205.17</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Congalala_Icon.webp.png" alt="ババコンガ"></td>
-                <td>ババコンガ</td>
-                <td>925.01</td>
-                <td>1313.93</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Blangonga_Icon.webp.png" alt="ドドブランゴ"></td>
-                <td>ドドブランゴ</td>
-                <td>791.44</td>
-                <td>1124.21</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Nerscylla_Icon.webp.png" alt="ネルスキュラ"></td>
-                <td>ネルスキュラ</td>
-                <td>644.12</td>
-                <td>914.95</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gore_Magala_Icon.webp.png" alt="ゴア・マガラ"></td>
-                <td>ゴア・マガラ</td>
-                <td>1571.65</td>
-                <td>2101.42</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Mizutsune_Icon.webp.png" alt="タマミツネ"></td>
-                <td>タマミツネ</td>
-                <td>1692.62</td>
-                <td>2404.29</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Fulgur_Anjanath_Icon.webp.png" alt="護竜アンジャナフ亜種"></td>
-                <td>護竜アンジャナフ亜種</td>
-                <td>1448.88</td>
-                <td>2058.07</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Ebony_Odogaron_Icon.webp.png" alt="護竜オドガロン亜種"></td>
-                <td>護竜オドガロン亜種</td>
-                <td>1222.1</td>
-                <td>1735.93</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Doshaguma_Icon.webp.png" alt="ドシャグマ"></td>
-                <td>ドシャグマ</td>
-                <td>1223.61</td>
-                <td>1807.61</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Doshaguma_Icon.webp.png" alt="護竜ドシャグマ"></td>
-                <td>護竜ドシャグマ</td>
-                <td>1223.61</td>
-                <td>1738.08</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Balahara_Icon.webp.png" alt="バーラハーラ"></td>
-                <td>バーラハーラ</td>
-                <td>1683.1</td>
-                <td>2390.76</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Chatacabra_Icon.webp.png" alt="チャタカブラ"></td>
-                <td>チャタカブラ</td>
-                <td>438.5</td>
-                <td>622.87</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Quematrice_Icon.webp.png" alt="ケマトリス"></td>
-                <td>ケマトリス</td>
-                <td>1094.86</td>
-                <td>1555.2</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Lala_Barina_Icon.webp.png" alt="ラバラ・バリナ"></td>
-                <td>ラバラ・バリナ</td>
-                <td>614.89</td>
-                <td>873.43</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rompopolo_Icon.webp.png" alt="ププロポル"></td>
-                <td>ププロポル</td>
-                <td>1054.08</td>
-                <td>1497.27</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rey_Dau_Icon.webp.png" alt="レ・ダウ"></td>
-                <td>レ・ダウ</td>
-                <td>1830.8</td>
-                <td>2571.35</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Uth_Duna_Icon.webp.png" alt="ウズ・トゥナ"></td>
-                <td>ウズ・トゥナ</td>
-                <td>2651.57</td>
-                <td>3426.18</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Nu_Udra_Icon.webp.png" alt="ヌ・エグドラ"></td>
-                <td>ヌ・エグドラ</td>
-                <td>1863.39</td>
-                <td>2407.75</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Ajarakan_Icon.webp.png" alt="アジャラカン"></td>
-                <td>アジャラカン</td>
-                <td>1024.63</td>
-                <td>1455.44</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Arkveld_Icon.webp.png" alt="アルシュベルド"></td>
-                <td>アルシュベルド</td>
-                <td>1483.22</td>
-                <td>2083.17</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Arkveld_Icon.webp.png" alt="護竜アルシュベルド"></td>
-                <td>護竜アルシュベルド</td>
-                <td>1666.54</td>
-                <td>1666.54</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Hirabami_Icon.webp.png" alt="ヒラバミ"></td>
-                <td>ヒラバミ</td>
-                <td>1460.21</td>
-                <td>1908.24</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Jin_Dahaad_Icon.webp.png" alt="ジン・ダハド"></td>
-                <td>ジン・ダハド</td>
-                <td>4560.89</td>
-                <td>4560.89</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Xu_Wu_Icon.webp.png" alt="シーウー"></td>
-                <td>シーウー</td>
-                <td>1228.74</td>
-                <td>1745.37</td>
-            </tr>
-            <tr>
-                <td><img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Zoh_Shia_Icon.webp.png" alt="ゾ・シア"></td>
-                <td>ゾ・シア</td>
-                <td>4623.59</td>
-                <td>4623.59</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Monster Hunter Sizes</h1>
+        <div class="monster-grid">
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rathian_Icon.webp.png" alt="リオレイア" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">リオレイア</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1543.84</span></div>
+                        <div class="size-box">Max: <span>2192.96</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rathalos_Icon.webp.png" alt="リオレウス" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">リオレウス</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1499.71</span></div>
+                        <div class="size-box">Max: <span>2130.27</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Rathalos_Icon.webp.png" alt="護竜リオレウス" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">護竜リオレウス</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1499.71</span></div>
+                        <div class="size-box">Max: <span>2130.27</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gravios_Icon.webp.png" alt="グラビモス" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">グラビモス</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1848.51</span></div>
+                        <div class="size-box">Max: <span>2625.72</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Yian_Kut-Ku_Icon.webp.png" alt="イャンクック" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">イャンクック</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>885.14</span></div>
+                        <div class="size-box">Max: <span>1243.18</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gypceros_Icon.webp.png" alt="ゲリョス" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ゲリョス</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>848.44</span></div>
+                        <div class="size-box">Max: <span>1205.17</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Congalala_Icon.webp.png" alt="ババコンガ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ババコンガ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>925.01</span></div>
+                        <div class="size-box">Max: <span>1313.93</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Blangonga_Icon.webp.png" alt="ドドブランゴ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ドドブランゴ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>791.44</span></div>
+                        <div class="size-box">Max: <span>1124.21</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Nerscylla_Icon.webp.png" alt="ネルスキュラ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ネルスキュラ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>644.12</span></div>
+                        <div class="size-box">Max: <span>914.95</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Gore_Magala_Icon.webp.png" alt="ゴア・マガラ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ゴア・マガラ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1571.65</span></div>
+                        <div class="size-box">Max: <span>2101.42</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Mizutsune_Icon.webp.png" alt="タマミツネ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">タマミツネ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1692.62</span></div>
+                        <div class="size-box">Max: <span>2404.29</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Fulgur_Anjanath_Icon.webp.png" alt="護竜アンジャナフ亜種" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">護竜アンジャナフ亜種</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1448.88</span></div>
+                        <div class="size-box">Max: <span>2058.07</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Ebny_Odogaron_Icon.webp.png" alt="護竜オドガロン亜種" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">護竜オドガロン亜種</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1222.1</span></div>
+                        <div class="size-box">Max: <span>1735.93</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Doshaguma_Icon.webp.png" alt="ドシャグマ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ドシャグマ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1223.61</span></div>
+                        <div class="size-box">Max: <span>1807.61</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Doshaguma_Icon.webp.png" alt="護竜ドシャグマ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">護竜ドシャグマ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1223.61</span></div>
+                        <div class="size-box">Max: <span>1738.08</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Balahara_Icon.webp.png" alt="バーラハーラ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">バーラハーラ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1683.1</span></div>
+                        <div class="size-box">Max: <span>2390.76</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Chatacabra_Icon.webp.png" alt="チャタカブラ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">チャタカブラ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>438.5</span></div>
+                        <div class="size-box">Max: <span>622.87</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Quematrice_Icon.webp.png" alt="ケマトリス" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ケマトリス</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1094.86</span></div>
+                        <div class="size-box">Max: <span>1555.2</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Lala_Barina_Icon.webp.png" alt="ラバラ・バリナ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ラバラ・バリナ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>614.89</span></div>
+                        <div class="size-box">Max: <span>873.43</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rompopolo_Icon.webp.png" alt="ププロポル" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ププロポル</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1054.08</span></div>
+                        <div class="size-box">Max: <span>1497.27</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Rey_Dau_Icon.webp.png" alt="レ・ダウ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">レ・ダウ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1830.8</span></div>
+                        <div class="size-box">Max: <span>2571.35</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Uth_Duna_Icon.webp.png" alt="ウズ・トゥナ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ウズ・トゥナ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>2651.57</span></div>
+                        <div class="size-box">Max: <span>3426.18</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Nu_Udra_Icon.webp.png" alt="ヌ・エグドラ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ヌ・エグドラ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1863.39</span></div>
+                        <div class="size-box">Max: <span>2407.75</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Ajarakan_Icon.webp.png" alt="アジャラカン" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">アジャラカン</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1024.63</span></div>
+                        <div class="size-box">Max: <span>1455.44</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Arkveld_Icon.webp.png" alt="アルシュベルド" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">アルシュベルド</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1483.22</span></div>
+                        <div class="size-box">Max: <span>2083.17</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Guardian_Arkveld_Icon.webp.png" alt="護竜アルシュベルド" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">護竜アルシュベルド</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1666.54</span></div>
+                        <div class="size-box">Max: <span>1666.54</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Hirabami_Icon.webp.png" alt="ヒラバミ" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ヒラバミ</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1460.21</span></div>
+                        <div class="size-box">Max: <span>1908.24</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Jin_Dahaad_Icon.webp.png" alt="ジン・ダハド" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ジン・ダハド</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>4560.89</span></div>
+                        <div class="size-box">Max: <span>4560.89</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Xu_Wu_Icon.webp.png" alt="シーウー" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">シーウー</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>1228.74</span></div>
+                        <div class="size-box">Max: <span>1745.37</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monster-card">
+                <img src="https://storage.googleapis.com/mhwilds/512px-MHWilds-Zoh_Shia_Icon.webp.png" alt="ゾ・シア" class="monster-image">
+                <div class="monster-info">
+                    <div class="monster-name">ゾ・シア</div>
+                    <div class="monster-sizes">
+                        <div class="size-box">Min: <span>4623.59</span></div>
+                        <div class="size-box">Max: <span>4623.59</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
