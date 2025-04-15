@@ -6,24 +6,38 @@
   <title>モンハンワイルズ：モンスターサイズと弱点</title>
   <style>
     body {
-      background: url('https://raw.githubusercontent.com/Ninjapowe2/MHWilds_monster_list/refs/heads/main/monster-hunter-wilds-logo.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-      min-height: 100vh;
-      margin: 0;
-      overflow-x: hidden;
-      position: relative;
+    background: url('https://raw.githubusercontent.com/Ninjapowe2/MHWilds_monster_list/refs/heads/main/monster-hunter-wilds-logo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+  }
+  /* スマホ用の背景画像 */
+  @media (max-width: 768px) {
+    body {
+      background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp') no-repeat center center fixed;
+      background-size: contain; /* 画像の縦横比を維持し、画面に収まるように */
+      background-position: center;
+      background-attachment: fixed; /* 背景を固定してスクロール時に流れないように */
+      image-rendering: optimizeQuality; /* 高品質なレンダリングを優先 */
+      -webkit-background-size: contain; /* Safari向けの最適化 */
+      -webkit-optimize-contrast; /* Safariでの鮮明度向上 */
     }
-    /* スマホ用の背景画像 */
-    @media (max-width: 768px) {
+    /* 高解像度ディスプレイ向けの調整 */
+    @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+           (max-width: 768px) and (min-resolution: 192dpi) {
       body {
-        background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-all-hunter-profile-backgrounds-v0-V5XsT9xSSbcixAvu3KvYMIn67CDict1QxwmAMa-HU2k.webp') no-repeat center center fixed;
-        background-size: cover;
+        background-image: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp');
+        background-size: contain;
+        background-attachment: fixed; /* 高解像度でも固定 */
       }
     }
-    h1 {
+  }
+  h1 {
       text-align: center;
       font-size: 2.8rem;
       color: #ffcb69;
