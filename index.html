@@ -16,6 +16,13 @@
       overflow-x: hidden;
       position: relative;
     }
+    /* スマホ用の背景画像 */
+    @media (max-width: 768px) {
+      body {
+        background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-all-hunter-profile-backgrounds-v0-V5XsT9xSSbcixAvu3KvYMIn67CDict1QxwmAMa-HU2k.webp') no-repeat center center fixed;
+        background-size: cover;
+      }
+    }
     h1 {
       text-align: center;
       font-size: 2.8rem;
@@ -84,7 +91,7 @@
       animation: fadeInUp 0.6s ease forwards;
       animation-delay: calc(var(--index) * 0.1s);
       position: relative;
-      perspective: 1000px; /* 3D効果のための視点 */
+      perspective: 1000px;
       transition: transform 0.3s ease;
     }
     .monster-card:hover {
@@ -100,11 +107,11 @@
       width: 100%;
       height: 100%;
       position: relative;
-      transform-style: preserve-3d; /* 3D回転を有効化 */
-      transition: transform 0.6s ease; /* 回転アニメーション */
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
     }
     .monster-card.flipped .monster-card-inner {
-      transform: rotateY(180deg); /* 裏返し時に180度回転 */
+      transform: rotateY(180deg);
     }
     .monster-card-front,
     .monster-card-back {
@@ -114,7 +121,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      backface-visibility: hidden; /* 裏面が見えないように */
+      backface-visibility: hidden;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease;
       backdrop-filter: blur(3px);
@@ -142,14 +149,14 @@
       pointer-events: none;
     }
     .monster-card-back {
-      display: flex; /* 常にflexで配置 */
+      display: flex;
       background: linear-gradient(145deg, rgba(90, 58, 58, 0.9), rgba(74, 42, 42, 0.9));
       border: 2px solid rgba(255, 105, 105, 0.3);
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       color: #ffcb69;
-      transform: rotateY(180deg); /* 裏面は初期状態で180度回転 */
+      transform: rotateY(180deg);
     }
     .monster-card-back::before {
       content: '';
