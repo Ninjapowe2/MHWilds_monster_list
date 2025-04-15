@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>モンハンワイルズ：モンスターサイズと弱点</title>
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background: url('https://raw.githubusercontent.com/Ninjapowe2/MHWilds_monster_list/refs/heads/main/monster-hunter-wilds-logo.png') no-repeat center center fixed;
       background-size: cover;
@@ -12,30 +19,25 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 20px;
       min-height: 100vh;
-      margin: 0;
-      overflow-x: hidden;
-      position: relative;
     }
-    /* スマホ用の背景画像 */
+
     @media (max-width: 768px) {
-      body {
-        background-image: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp');
-        background-position: center center;
-        background-repeat: no-repeat;
+      html, body {
+        height: 100%;
+        background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp') no-repeat center center fixed;
         background-size: cover;
-        background-attachment: fixed; /* 背景を固定 */
-        -webkit-background-attachment: fixed; /* Safari向け */
+        background-attachment: fixed;
+        -webkit-background-attachment: fixed;
         image-rendering: optimizeQuality;
-        -webkit-optimize-contrast;
       }
     }
-    /* 高解像度ディスプレイ向けの調整 */
+
     @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
            (max-width: 768px) and (min-resolution: 192dpi) {
-      body {
+      html, body {
         background-image: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp');
         background-size: contain;
-        background-attachment: fixed; /* 高解像度でも固定 */
+        background-attachment: fixed;
       }
     }
   h1 {
