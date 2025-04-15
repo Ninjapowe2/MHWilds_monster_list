@@ -18,15 +18,17 @@
   }
   /* スマホ用の背景画像 */
   @media (max-width: 768px) {
-    body {
-      background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp') no-repeat center center fixed;
-      background-size: contain; /* 画像の縦横比を維持し、画面に収まるように */
-      background-position: center;
-      background-attachment: fixed; /* 背景を固定してスクロール時に流れないように */
-      image-rendering: optimizeQuality; /* 高品質なレンダリングを優先 */
-      -webkit-background-size: contain; /* Safari向けの最適化 */
-      -webkit-optimize-contrast; /* Safariでの鮮明度向上 */
-    }
+  body {
+    background-image: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* 画面全体をカバー（containも可だが、coverで試す） */
+    background-attachment: fixed; /* 背景を固定 */
+    -webkit-background-attachment: fixed; /* Safari向け */
+    image-rendering: optimizeQuality; /* 高品質レンダリング */
+    -webkit-optimize-contrast; /* Safariでの鮮明度向上 */
+  }
+}
     /* 高解像度ディスプレイ向けの調整 */
     @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
            (max-width: 768px) and (min-resolution: 192dpi) {
