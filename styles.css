@@ -1,0 +1,551 @@
+/* 元のデザインに基づくスタイル */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background: url('https://raw.githubusercontent.com/Ninjapowe2/MHWilds_monster_list/refs/heads/main/monster-hunter-wilds-logo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 768px) {
+    html, body {
+      height: 100%;
+      background: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      -webkit-background-attachment: fixed;
+      image-rendering: optimizeQuality;
+    }
+  }
+  
+  @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+         (max-width: 768px) and (min-resolution: 192dpi) {
+    html, body {
+      background-image: url('https://storage.googleapis.com/mhwilds/monster-hunter-wilds-mobile-wallpaper-9-19-3-v0-e8xuvip4p66d1.webp');
+      background-size: contain;
+      background-attachment: fixed;
+    }
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #ffcb69;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 203, 105, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.8rem;
+      padding: 8px 15px;
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.4rem;
+      padding: 6px 10px;
+    }
+  }
+  
+  @keyframes glow {
+    from { text-shadow: 0 0 5px rgba(255, 203, 105, 0.5); }
+    to { text-shadow: 0 0 15px rgba(255, 203, 105, 1); }
+  }
+  
+  .filter-controls {
+    text-align: center;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 2400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .filter-controls:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .filter-controls label {
+    font-size: 1.1rem;
+    margin-right: 10px;
+    color: #e0e0e0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    align-self: center;
+  }
+  
+  .filter-controls input[type="text"],
+  .filter-controls select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background: #2a2a4a;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+  }
+  
+  .filter-controls input[type="text"] {
+    width: 200px;
+  }
+  
+  .filter-controls select:hover,
+  .filter-controls input[type="text"]:hover {
+    background: #3a3a5a;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .filter-controls {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      gap: 15px;
+    }
+    .filter-controls label {
+      font-size: 0.9rem;
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+    .filter-controls input[type="text"],
+    .filter-controls select {
+      width: 90%;
+      max-width: 300px;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .filter-controls {
+      padding: 8px;
+      gap: 12px;
+    }
+    .filter-controls label {
+      font-size: 0.8rem;
+    }
+    .filter-controls input[type="text"],
+    .filter-controls select {
+      width: 100%;
+      max-width: 250px;
+      padding: 6px 8px;
+      font-size: 0.8rem;
+    }
+  }
+  
+  .monster-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 2400px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 1600px) {
+    .monster-grid {
+      grid-template-columns: repeat(4, minmax(300px, 1fr));
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .monster-grid {
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .monster-grid {
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      padding: 0 15px;
+    }
+    .monster-card {
+      height: 340px;
+    }
+    .monster-image {
+      height: 140px;
+    }
+    .monster-name {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .monster-grid {
+      grid-template-columns: 1fr;
+      padding: 0 10px;
+    }
+    .monster-card {
+      height: 320px;
+    }
+    .monster-image {
+      height: 130px;
+    }
+    .monster-name {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .monster-card {
+    cursor: pointer;
+    height: 380px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+    position: relative;
+    perspective: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    touch-action: manipulation;
+    padding: 10px;
+  }
+  
+  .monster-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+    opacity: 1; /* ホバー時の消滅を防ぐ */
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .monster-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+  }
+  
+  .monster-card.flipped .monster-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .monster-card-front,
+  .monster-card-back {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+    backdrop-filter: blur(3px);
+    padding: 20px;
+    top: 0;
+    left: 0;
+  }
+  
+  .monster-card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(145deg, rgba(42, 42, 74, 0.9), rgba(31, 31, 58, 0.9));
+    border: 2px solid rgba(255, 203, 105, 0.3);
+  }
+  
+  .monster-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 203, 105, 0.1), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .monster-card-back {
+    display: flex;
+    background: linear-gradient(145deg, rgba(90, 58, 58, 0.9), rgba(74, 42, 42, 0.9));
+    border: 2px solid rgba(255, 105, 105, 0.3);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffcb69;
+    transform: rotateY(180deg);
+  }
+  
+  .monster-card-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  
+  .monster-card-front:hover,
+  .monster-card-back:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+  }
+  
+  .monster-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 203, 105, 0.2);
+  }
+  
+  .monster-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 203, 105, 0.5);
+  }
+  
+  .monster-info {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .monster-name {
+    font-size: 1.6rem;
+    color: #ffcb69;
+    margin: 10px 0;
+    text-shadow: 0 0 5px rgba(255, 203, 105, 0.3);
+    transition: text-shadow 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  
+  .monster-name::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffcb69, transparent);
+    opacity: 0.7;
+  }
+  
+  .monster-name:hover {
+    text-shadow: 0 0 10px rgba(255, 203, 105, 0.8);
+  }
+  
+  .monster-card-back .monster-name {
+    color: #ff5555;
+    text-shadow: 0 0 5px rgba(255, 105, 105, 0.3);
+  }
+  
+  .monster-card-back .monster-name:hover {
+    text-shadow: 0 0 10px rgba(255, 105, 105, 0.8);
+  }
+  
+  .monster-card-back .monster-name::after {
+    background: linear-gradient(to right, transparent, #ff5555, transparent);
+  }
+  
+  .monster-sizes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
+  .size-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 203, 105, 0.2);
+  }
+  
+  .size-box:hover {
+    background: rgba(255, 203, 105, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(255, 203, 105, 0.3);
+  }
+  
+  .weakness-icons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .weakness-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .weakness-icon.level-3 {
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid #ff5555;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    animation: pulseLevel3 2s infinite;
+  }
+  
+  .weakness-icon.level-2 {
+    background: rgba(255, 165, 0, 0.3);
+    border: 2px solid #ffa500;
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+    animation: pulseLevel2 2s infinite;
+  }
+  
+  .weakness-icon.level-1,
+  .weakness-icon.level-0 {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.8;
+  }
+  
+  @keyframes pulseLevel3 {
+    0% { box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
+    100% { box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); }
+  }
+  
+  @keyframes pulseLevel2 {
+    0% { box-shadow: 0 0 8px rgba(255, 165, 0, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(255, 165, 0, 0.8); }
+    100% { box-shadow: 0 0 8px rgba(255, 165, 0, 0.5); }
+  }
+  
+  .weakness-icon:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  
+  .weakness-icon img {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease;
+  }
+  
+  .weakness-icon:hover img {
+    filter: brightness(1.5);
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .weakness-icon:hover .tooltip {
+    opacity: 1;
+  }
+  
+  .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #b0bec5;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .favorite-btn.favorited {
+    color: #ffcb69;
+  }
+  
+  .favorite-btn:hover {
+    color: #ffffff;
+  }
+  
+  .background-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .particle {
+    position: absolute;
+    background: rgba(255, 203, 105, 0.5);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+    opacity: 0.7;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+  }
