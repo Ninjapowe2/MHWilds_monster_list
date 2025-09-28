@@ -1,0 +1,26 @@
+{
+  "iconMap": {
+    "fire": "https://monsterhunterwiki.org/images/thumb/e/ee/UI-Fireblight.png/21px-UI-Fireblight.png",
+    "water": "https://monsterhunterwiki.org/images/thumb/4/4c/UI-Waterblight.png/18px-UI-Waterblight.png",
+    "lightning": "https://monsterhunterwiki.org/images/thumb/1/1d/UI-Thunderblight.png/22px-UI-Thunderblight.png",
+    "ice": "https://monsterhunterwiki.org/images/thumb/7/7e/UI-Iceblight.png/18px-UI-Iceblight.png",
+    "dragon": "https://monsterhunterwiki.org/images/thumb/e/e6/UI-Dragonblight.png/16px-UI-Dragonblight.png"
+  },
+  "crownIcons": {
+    "min": "https://monsterhunterwiki.org/images/thumb/3/3f/MHWI-Small_Crown.png/32px-MHWI-Small_Crown.png",
+    "max": "https://monsterhunterwiki.org/images/thumb/6/61/MHWI-Gold_Crown.png/32px-MHWI-Gold_Crown.png"
+  },
+  "elementNames": {
+    "fire": "火属性",
+    "water": "水属性",
+    "lightning": "雷属性",
+    "ice": "氷属性",
+    "dragon": "龍属性"
+  },
+  "elementDescriptions": {
+    "3": "非常に有効",
+    "2": "有効",
+    "1": "やや有効",
+    "0": "効果なし"
+  }
+}
